@@ -1,4 +1,4 @@
-# Пример внедрения SDK отзывов и оценок RuStore
+# Пример внедрения RuStore SDK обновления приложения
 ## [Документация SDK для обновления приложения](https://help.rustore.ru/rustore/for_developers/developer-documentation/sdk_updates)
 
 ### Требуемые условия
