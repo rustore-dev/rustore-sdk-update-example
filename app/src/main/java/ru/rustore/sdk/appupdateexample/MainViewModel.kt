@@ -11,6 +11,7 @@ import ru.rustore.sdk.appupdate.listener.InstallStateUpdateListener
 import ru.rustore.sdk.appupdate.manager.RuStoreAppUpdateManager
 import ru.rustore.sdk.appupdate.manager.factory.RuStoreAppUpdateManagerFactory
 import ru.rustore.sdk.appupdate.model.AppUpdateOptions
+import ru.rustore.sdk.appupdate.model.AppUpdateType
 import ru.rustore.sdk.appupdate.model.InstallStatus
 import ru.rustore.sdk.appupdate.model.UpdateAvailability
 
@@ -73,7 +74,10 @@ class MainViewModel : ViewModel() {
     }
 
     fun completeUpdateRequested() {
-        ruStoreAppUpdateManager.completeUpdate()
+        ruStoreAppUpdateManager.completeUpdate(AppUpdateOptions.Builder().appUpdateType(AppUpdateType.FLEXIBLE).build())
+            .addOnFailureListener { throwable ->
+                Log.e(TAG, "completeUpdate error", throwable)
+            }
     }
 
     companion object {

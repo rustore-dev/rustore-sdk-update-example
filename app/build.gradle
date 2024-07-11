@@ -2,6 +2,15 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("cert/release.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     namespace 'ru.rustore.sdk.appupdateexample'
@@ -15,6 +24,17 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        signingConfigs {
+            signingConfigs {
+                config {
+                    keyAlias keystoreProperties['key_alias']
+                    keyPassword keystoreProperties['key_password']
+                    storeFile file(keystoreProperties['storeFile'])
+                    storePassword keystoreProperties['store_password']
+                }
+            }
+        }
     }
 
     buildTypes {
@@ -33,7 +53,7 @@ android {
 }
 
 dependencies {
-    implementation("ru.rustore.sdk:appupdate:1.0.0")
+    implementation("ru.rustore.sdk:appupdate:6.0.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation 'androidx.appcompat:appcompat:1.6.1'
