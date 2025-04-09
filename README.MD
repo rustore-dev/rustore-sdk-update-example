@@ -54,7 +54,7 @@
    ```
    android {
        defaultConfig {
-          applicationId = "ru.rustore.sdk.reviewexample"
+          applicationId = "ru.rustore.sdk.appupdateexample"
        }
    }
    ```

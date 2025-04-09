@@ -53,7 +53,8 @@ android {
 }
 
 dependencies {
-    implementation("ru.rustore.sdk:appupdate:6.0.0")
+    implementation(platform("ru.rustore.sdk:bom:2025.02.01"))
+    implementation("ru.rustore.sdk:appupdate")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation 'androidx.appcompat:appcompat:1.6.1'
